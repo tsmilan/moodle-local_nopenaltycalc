@@ -44,6 +44,7 @@ class hook_callbacks {
         $sql = "SELECT gg.itemid,
                        gg.deductedmark,
                        gi.itemtype,
+                       gg.overridden,
                        gg.finalgrade
                  FROM {grade_grades} gg
            INNER JOIN {grade_items} gi ON gg.itemid = gi.id

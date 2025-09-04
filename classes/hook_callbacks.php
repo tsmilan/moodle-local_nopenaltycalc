@@ -107,7 +107,7 @@ class hook_callbacks {
                     $hook->grademinoverrides[$itemid] : $hook->items[$itemid]->grademin;
                 $usergrademax = isset($hook->grademaxoverrides[$itemid]) ?
                     $hook->grademaxoverrides[$itemid] : $hook->items[$itemid]->grademax;
-                if ($hook->get_category_aggregation() == GRADE_AGGREGATE_SUM) {
+                if ($hook->gradecategory->aggregation == GRADE_AGGREGATE_SUM) {
                     // Assume that the grademin is 0 when standardising the score, to preserve negative grades.
                     $normalisedgradevalues[$itemid] = grade_grade::standardise_score($v, 0, $usergrademax, 0, 1);
                 } else {
@@ -131,7 +131,7 @@ class hook_callbacks {
             $hook->grademaxoverrides
         );
 
-        if ($hook->get_category_aggregation() == GRADE_AGGREGATE_SUM) {
+        if ($hook->gradecategory->aggregation == GRADE_AGGREGATE_SUM) {
             // The natural aggregation always displays the range as coming from 0 for categories.
             // However, when we bind the grade we allow for negative values.
             $result['grademin'] = 0;
